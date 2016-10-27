@@ -1,0 +1,10 @@
+
+*.make
+
+*.xcuserstate
+
+
+
+/obj
+/bin/algoWeb.app
+bin/data/brown.ttf
