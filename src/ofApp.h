@@ -113,7 +113,7 @@
 //#define screenWidthInit 1366
 //#define screenHeightInit 768
 
-#define dimensionWeb 3000
+#define dimensionWeb 400
 
 
 //#define widthPreview 768

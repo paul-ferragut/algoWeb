@@ -818,7 +818,7 @@ void ofApp::checkChange(){
                     }
                     case SL2:
                     {
-                        fluidityVal[1]=ofMap(ofToFloat(pVar[1]),0,100,0.001f, 1,true);
+                        fluidityVal[1]=ofMap(ofToFloat(pVar[1]),0,100,0.100f, 1,true);
                         
                         break;
                     }
@@ -830,7 +830,7 @@ void ofApp::checkChange(){
                     }
                     case SL4:
                     {
-                        scaleVal=ofMap(ofToFloat(pVar[1]),0,100,5, 600,true);////scaleMult;
+                        scaleVal=ofMap(ofToFloat(pVar[1]),0,100,5, 1000,true);////scaleMult;
                         
                         break;
                     }
