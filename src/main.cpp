@@ -7,7 +7,7 @@ int main( ){
     // ofAppGlutWindow window;
     
     
-    ofSetupOpenGL(screenWidthInit, screenHeightInit, OF_WINDOW);			// <-------- setup the GL context
+    ofSetupOpenGL(dimensionWeb, dimensionWeb, OF_WINDOW);			// <-------- setup the GL context
     
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN

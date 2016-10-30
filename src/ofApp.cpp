@@ -42,10 +42,14 @@ void ofApp::setup()
     
 #ifdef TARGET_EMSCRIPTEN
     
+    
+    
     divWidth=  emscripten_run_script_int("$('#scarvesDiv').width();");
-    cout<<"divWidth"<<divWidth<<endl;
-    widthScarf = (float)divWidth;
-    heightScarf= (float)divWidth;
+   // cout<<"divWidth launch"<<divWidth<<endl;
+    
+    widthScarf =  divWidth;//dimensionWeb;//screenWidthInit;//(float)divWidth;
+    heightScarf=  divWidth;//dimensionWeb;//screenWidthInit;//(float)divWidth;
+    
     ofSetWindowShape(divWidth, divWidth);
     
     //  scaleMult = widthScarf/ inputScarfW;
@@ -53,7 +57,7 @@ void ofApp::setup()
     
 #endif
     //INIT LAYOUT VARIABLE
-    cout<<"setup fract"<<endl;
+  //  cout<<"setup fract"<<endl;
     
     fluidityVal[0]=1.0;
     fluidityVal[1]=0.5;
@@ -187,10 +191,11 @@ void ofApp::setup()
     
     
     cout<<"load images"<<endl;
-    image.load("3scarves.png");
-    imageBlack.load("1scarves.png");
-    imageWhite.load("2scarves.png");
+    image.load("under.png");
+    imageBlack.load("over.png");
+    imageWhite.load("overw.png");
     cout<<"images loaded"<<endl;
+    /*
     string pointString = "1030.2, 580.6 1029.9, 578.2 1029.6, 576 1029.2, 574.1 1028.7, 572.5 1028, 570.8 1027.1, 568.5 1026, 565.4 1024.8, 561.3 1023.5, 556.1 1022.1, 549.6 1020.6, 541.7 1019, 532.2 1016.6, 523.1 1010.2, 500.6 1005.9, 486.5 1001, 471.8 995.7, 457.3 990.2, 443.9 985.4, 432.8 982, 424.2 979.7, 417.7 978.2, 412.9 977.3, 409.4 976.3, 404.4 975.7, 402.1 974.4, 399.1 972.3, 395.1 969.5, 390.4 966.2, 385.3 962.5, 380.1 958.6, 375 954.7, 370.4 951, 366.5 946.7, 362.6 940.9, 358 933.9, 352.8 925.8, 347.2 916.8, 341.4 907.1, 335.5 896.8, 329.6 886.1, 324 876.7, 319.4 869.9, 316.2 865.2, 314.3 862.3, 313.3 861, 313 860.4, 313.1 860.3, 313.4 860.4, 313.5 860.2, 313.5 859.6, 313.3 858.7, 313 857.5, 312.6 856.1, 312.1 854.5, 311.5 852.8, 310.7 851, 309.8 849.1, 308.4 847.1, 306.5 845, 304.2 843, 301.7 838.2, 295.2 837.3, 294 836.7, 293.4 836.2, 293 835.8, 292.8 835.5, 292.8 835.3, 292.9 835.2, 293 835.2, 293.1 835, 295.4 834.6, 301.1 834.4, 304.7 834.3, 308.4 834.3, 312 834.6, 318.8 834.6, 322.8 834.4, 327.2 834.1, 332 833.6, 337 832.9, 342 832, 347 830.9, 351.8 818.7, 381.8 805.7, 418 799.8, 433 793.2, 448.6 786.1, 463.9 778.6, 477.9 741.3, 543.1 697.5, 609.1 681.1, 586 674.2, 575.7 667.3, 565 661, 554.5 644.1, 522 622.4, 478.1 616.5, 465.1 612.5, 455.3 562.6, 342.1 560, 335.8 558.6, 332.1 555.4, 321.7 554.1, 317 552.9, 311.9 552, 306.5 551.5, 301 551.6, 295.6 549.7, 288 547.3, 290.9 544.6, 294.1 541.1, 298.1 539.2, 300.4 537.3, 302.9 535.4, 305.6 511.2, 342.3 505, 347.6 499.6, 352.6 497, 355.2 492.5, 360 488.1, 364.5 482.1, 370.3 481.8, 370.6 435, 419.3 431.6, 423.2 427.5, 428.5 422.4, 434.8 419.7, 438 417, 441.1 414, 444 411.5, 446.4 408.2, 449.8 403.3, 455.3 391, 470.1 384.6, 478.1 378.8, 485.7 374, 492.3 370.8, 497.3 370.4, 498.2 369.4, 500.8 368, 504.8 366.5, 510 365.1, 516.1 364, 522.9 363.4, 530.2 363.6, 537.8 370.5, 605 383, 679.8 384.3, 686 423.2, 843.6 445.1, 924.6 462.9, 984.6 464.5, 989.5 469.2, 1002.2 479.4, 1027.1 481, 1030.8 483.3, 1035.3 513, 1087.9 515.4, 1091.9 559.9, 1157.1 563.6, 1162 673.4, 1301.1 684.7, 1316.1 690.4, 1324.4 691.9, 1326.4 695.6, 1331.4 697.8, 1334.6 700.1, 1338.1 702.3, 1341.6 704.2, 1345 705.8, 1348.3 708.5, 1354.2 710.4, 1358.7 711.5, 1361.6 718.8, 1374.2 718.8, 1374.1 718.9, 1373.9 719.2, 1373.5 719.8, 1373 720.8, 1372.2 722.3, 1371.2 724.4, 1370 730.3, 1366.7 733.3, 1364.8 736.2, 1362.9 738.9, 1361.1 741.2, 1359.4 743.1, 1358 744.5, 1356.9 745.3, 1356.2 746.2, 1355.4 747.7, 1353.8 749.7, 1351.4 752.2, 1348.2 755.1, 1344.2 758.4, 1339.4 761.9, 1333.8 778.1, 1306.1 782.5, 1298.8 787.1, 1291.6 791.8, 1284.6 796.6, 1277.9 801.4, 1271.6 806.2, 1264.3 812.1, 1255.8 820.1, 1244.6 830.1, 1231.2 842, 1216 855.7, 1199.5 871, 1182 902, 1143.3 914.1, 1127.4 925.4, 1111.8 934.7, 1098 940.7, 1087.3 951.2, 1069.5 958.4, 1047.6 960.4, 1042 973.8, 1001.5 979.5, 979.3 982.1, 970.3 984.8, 961.5 987.5, 953.8 990, 948 993, 939.1 996.1, 930.6 997.9, 926.1 1001.5, 917.8 1002.8, 914.4 1003.8, 911.5 1004.5, 909 1005, 906.9 1006.2, 900.2 1006.4, 898.3 1006.6, 896.2 1006.7, 894 1006.7, 891.7 1006.7, 889.3 1006.6, 886.9 1006.4, 884.5 1006.1, 882.3 1005.6, 878.8 1005.4, 877.2 1005.2, 875.5 1005.1, 873.5 1005.1, 871 1005.2, 867.9 1014.7, 743.4 1030.7, 599.4 1031.1, 591.2 1030.8, 588.5";
     vector<string>parsedString;
     parsedString= ofSplitString(pointString, " ");
@@ -198,6 +203,7 @@ void ofApp::setup()
         ofPoint ptTemp(ofToFloat(parsedString[i]), ofToFloat(parsedString[i + 1]));
         pts.push_back(ptTemp);
     }
+    */
     
     
     
@@ -226,13 +232,17 @@ void ofApp::update()
     
     
 #ifdef TARGET_EMSCRIPTEN
+    
+    /*
     int prevDivWidth=divWidth;
+    
+    
     divWidth=  emscripten_run_script_int("$('#scarvesDiv').width();");
     if (divWidth!=prevDivWidth) {
         ofSetWindowShape(divWidth, divWidth);//*0.666
         cout<<"resized"<<endl;
     }
-    
+    */
     
     checkChange();
     
@@ -498,7 +508,7 @@ void ofApp::addColor(){
     if(currentAlgo==FRACTIONAL){
         //if (currentColorNum<MAX_COLOR)
         //{
-        cout << "NEW COLOR" << endl;
+       // cout << "NEW COLOR" << endl;
         ofColor col = grad.getColorAtPercent(1);
         
         //TO CHANGE
@@ -531,7 +541,7 @@ void ofApp::removeColor(){
     if(currentAlgo==FRACTIONAL){
         //if (currentColorNum>=MIN_COLOR)
         //{
-        cout << "REMOVED COLOR" << endl;
+       // cout << "REMOVED COLOR" << endl;
         grad.deleteColor();
         
         //currentColorNum--;
@@ -540,7 +550,7 @@ void ofApp::removeColor(){
     if(currentAlgo==VERTICES){
         //  if (currentColorNum>=MIN_COLOR)
         // {
-        cout << "REMOVED COLOR" << endl;
+      //  cout << "REMOVED COLOR" << endl;
         currentColorNum--;
         //}
     }
@@ -752,7 +762,9 @@ void ofApp::checkChange(){
     
     char * input= emscripten_run_script_string("getVar();");
     string inputString(input);
-    //  cout<<"designString"<<inputString<<endl;
+    
+    
+  //  cout<<"designString"<<inputString<<endl;
     if (inputString!="") {
         
         
@@ -762,7 +774,7 @@ void ofApp::checkChange(){
         for(int i=0;i<parsedString.size();i++){
             
             //string parsedString = inputString;//ofSplitString(inputString, ";",true,true);//ignore empty and trim
-              cout<<"input"<<parsedString[i]<<endl;
+      //        cout<<"input"<<parsedString[i]<<endl;
             
             
             
@@ -777,7 +789,7 @@ void ofApp::checkChange(){
             for(int j=0;j<varMap.size();j++){
                 if(varMap[j]==pVar[0]){
                     indexVar=j;
-                    cout<<"indexVar"<<ofToString(indexVar)<<endl;
+              //      cout<<"indexVar"<<ofToString(indexVar)<<endl;
                     //val=ofToFloat(pVar[index]
                     //cout<<"val"<<pVar[1]<<endl;
                 }
@@ -793,7 +805,7 @@ void ofApp::checkChange(){
                 switch (indexVar){
                     case PLAY:
                     {
-                        cout<<"play pause"<<pVar[1]<<endl;
+               //         cout<<"play pause"<<pVar[1]<<endl;
                         play=ofToBool(pVar[1]);
                         
                         break;
@@ -818,15 +830,34 @@ void ofApp::checkChange(){
                     }
                     case SL4:
                     {
-                        scaleVal=ofMap(ofToFloat(pVar[1]),0,100,5, 600,true);//*1;//scaleMult;
+                        scaleVal=ofMap(ofToFloat(pVar[1]),0,100,5, 600,true);////scaleMult;
                         
                         break;
                     }
                     case RESW:
                     {
-                        float inputScarfW = ofToFloat(pVar[1]);
+                        //float inputScarfW = ofToFloat(pVar[1]);
                         //  float inputScarfH = ofToFloat(parsedString[6]);
-                        scaleMult = widthScarf/ inputScarfW;
+                        
+                  
+                        
+                        int prevDivWidth=divWidth;
+                        divWidth=ofToFloat(pVar[1]);
+                        
+                        
+                        scaleMult = (float)dimensionWeb / (float)divWidth;
+                        
+                      //  cout<<"previous size:"<<prevDivWidth<<" new size:"<<divWidth<<" scaleMult:"<<scaleMult<<endl;
+                        
+                        if (divWidth!=prevDivWidth) {
+                        
+                            ofSetWindowShape(divWidth, divWidth);// *0.666
+                        //    cout<<"resized"<<endl;
+                            widthScarf=divWidth;
+                            heightScarf=divWidth;
+                        
+                        }
+                        
                         
                         break;}
                     case TIMER:
@@ -927,7 +958,7 @@ void ofApp::checkChange(){
                         break;}
                     case GETVAR:
                     {
-                        cout<<"input var getvar"<<pVar[1]<<endl;
+                    //    cout<<"input var getvar"<<pVar[1]<<endl;
                         if(ofToInt(pVar[1])==1){
                             cout<<"currentTime="+ofToString(currentTime)+";"<<endl;
                             string ofString="currentTime="+ofToString(currentTime)+";";
@@ -937,7 +968,7 @@ void ofApp::checkChange(){
                            
                            break;}
                     default :{
-                        cout<<"default"<<endl;
+                       // cout<<"default"<<endl;
                     }
                 }
                 
@@ -1041,6 +1072,26 @@ void ofApp::checkChange(){
                         
                         
                         break;}
+                    case RESW:
+                    {
+                        int prevDivWidth=divWidth;
+                        divWidth=ofToFloat(pVar[1]);
+                        
+                        
+                        scaleMult = (float)dimensionWeb / (float)divWidth;
+                        
+                        //  cout<<"previous size:"<<prevDivWidth<<" new size:"<<divWidth<<" scaleMult:"<<scaleMult<<endl;
+                        
+                        if (divWidth!=prevDivWidth) {
+                            
+                            ofSetWindowShape(divWidth, divWidth);// *0.666
+                            //    cout<<"resized"<<endl;
+                            widthScarf=divWidth;
+                            heightScarf=divWidth;
+                            
+                        }
+                        
+                        break;}
                     case RGB1:
                     {
                         vector<string>colRGB=ofSplitString(pVar[1], ",",true,true);
@@ -1088,7 +1139,7 @@ void ofApp::checkChange(){
                         break;}
                     case GETVAR:
                     {
-                         cout<<"input var getvar"<<pVar[1]<<endl;
+                        // cout<<"input var getvar"<<pVar[1]<<endl;
                         if(ofToInt(pVar[1])==1){
                            // cout<<"send time var"<<endl;
                             string ofString="currentTime="+ofToString(currentTime)+";";
@@ -1098,14 +1149,25 @@ void ofApp::checkChange(){
                         
                     break;}
                     default :{
-                        cout<<"default"<<endl;
+                       // cout<<"default"<<endl;
                     }
                 }
             }
+            
+            
+            
+            
         }
         
-        emscripten_run_script("sentVar='';");
+    
+        /*
+    string ofStringClear="sentVar='';";
+    const char * passStringc=ofStringClear.c_str();
+    emscripten_run_script(passStringc);
+    */
     }
+    
+
     
 #endif
     
@@ -1151,8 +1213,12 @@ void ofApp::drawFrac(){
     shader.setUniform1f("fluidity1", fluidityVal[0]);
     shader.setUniform1f("fluidity2", fluidityVal[1]);
     shader.setUniform1i("fluidity3", fluidityVal[2]);
-    shader.setUniform1f("scaleWidth",scaleVal);
-    shader.setUniform1f("scaleHeight", scaleVal);
+    
+    
+    float testDivide= (float)divWidth/(float)dimensionWeb  ;
+    
+    shader.setUniform1f("scaleWidth",scaleVal*testDivide);//*scaleMult
+    shader.setUniform1f("scaleHeight", scaleVal*testDivide);//*scaleMult
     shader.setUniform1f("time", currentTime);//ofGetFrameNum() *timeMotionVal.getValue());
     shader.setUniformTexture( "gradient", tex, 1 );
     shader.setUniform1f("colorThreshold", colorThreshold);
@@ -1163,11 +1229,16 @@ void ofApp::drawFrac(){
         ofDrawRectangle(0,0,widthScarf,heightScarf);
     }else if (currentScene==0){
         
-        shader.setUniform1f("scaleWidth", scaleVal*1.3);
-        shader.setUniform1f("scaleHeight", scaleVal*1.3);
+        shader.setUniform1f("scaleWidth", scaleVal/scaleMult);// *1.3);*scaleMult
+        shader.setUniform1f("scaleHeight", scaleVal/scaleMult);// 1.3);*scaleMult
         
+        
+      //  cout<<" scale multiply"<<scaleVal*scaleMult<<endl;
         
         ofSetColor(255, 255, 255);
+        ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+        
+        /*
         ofPushMatrix();
         ofScale((float)widthScarf/1400.0, (float)widthScarf/1400.0);
         ofBeginShape();
@@ -1175,7 +1246,11 @@ void ofApp::drawFrac(){
             ofVertex(pts[i]);
         }
         ofEndShape();
-        ofPopMatrix();
+        */
+        
+        
+        
+        //ofPopMatrix();
     }
     
     

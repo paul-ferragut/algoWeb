@@ -110,8 +110,10 @@
 //#define heightScarf 768//*2//5800
 
 
-#define screenWidthInit 1366
-#define screenHeightInit 768
+//#define screenWidthInit 1366
+//#define screenHeightInit 768
+
+#define dimensionWeb 3000
 
 
 //#define widthPreview 768
