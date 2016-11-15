@@ -74,7 +74,7 @@
 #define FRACTIONAL 0
 #define VERTICES 1
 
-
+#define ITEMSNUM 3
 
 #include "ofMain.h"
 //#include "ofxControlPanel.h"
@@ -223,8 +223,8 @@ int height;
 	simpleButtonsTwoStates btPlayPauseCat;
 */
 
-
     int currentColorNum;
+    //int currentColorNum;
 
 
 	void layoutVar();
@@ -289,14 +289,17 @@ int height;
 
     int currentScene;
     
+    int currentItem;
+    
     bool play;
     
     bool useMessage;
     string message;
  
-    ofImage image;
-    ofImage imageBlack;
-    ofImage imageWhite;
+    ofImage image[3];
+    ofImage imageT[3];
+    //ofImage imageBlack;
+    //ofImage imageWhite;
     
     vector<ofPoint>pts;
     
@@ -317,7 +320,7 @@ int height;
     ofxOceanRenderer renderer;
     
     //ofShader oceanShader; //not used
-    
+    ofShader fogShader;
     
     
     //bool shouldRegenerateOcean;
@@ -351,7 +354,7 @@ int height;
     float waveScale;
     float choppyScale;
     float waveSpeed;
-    bool depthTesting;
+    bool alphaBlending;
     
     bool useFlatSurface;
     float cameraMove;
@@ -371,6 +374,7 @@ int height;
     ofVec3f camAngle;
     float radiusFlat;
     float fov;
+    float fovMult;
     bool  useEasyCam;
     
     bool drawGui;
@@ -399,6 +403,11 @@ int height;
     
     
     ofTrueTypeFont font;
+   //ofFbo fbo;
+    
+     ofShader fog;
+    
+ //   bool useFogDebug;
     
 };
 

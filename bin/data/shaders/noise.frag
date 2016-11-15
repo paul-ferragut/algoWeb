@@ -34,7 +34,7 @@ uniform float scaleWidth;
 uniform float scaleHeight;
 
 
-
+uniform vec2 offset;
 uniform sampler2D gradient;
 uniform float gradientWidth;
 
@@ -197,7 +197,7 @@ return fbm( p + 4.0*r ,oc,l,g);
 
 void main() {
 
-vec2 q = gl_FragCoord.xy / vec2(scaleWidth,scaleHeight);
+vec2 q = ((gl_FragCoord.xy+offset) / vec2(scaleWidth,scaleHeight));
 vec2 p = -1.0 + 2.0 * q;
 vec2 qq;
 vec2 r;
@@ -232,7 +232,7 @@ c *= 3.5;
     
      float gray = c.r + c.g + c.b;
     
-    vec4 map = texture2D(gradient, vec2(gray*0.3,0.3) );//gray//colorThreshold*gradientWidth*gl_FragCoord.x*gl_FragCoord.xcolorThreshold
+    vec4 map = texture2D(gradient, vec2(gray*0.3,gray*0.3) );//gray//colorThreshold*gradientWidth*gl_FragCoord.x*gl_FragCoord.xcolorThreshold
     
     gl_FragColor = vec4( map.rgb, c.a );
     
